@@ -6,9 +6,6 @@ using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -20,8 +17,6 @@ builder.Services.AddCors(options =>
          .AllowAnyHeader()));
 
 var app = builder.Build();
-app.UseSwagger();
-app.UseSwaggerUI();
 app.UseCors("AllowFront");
 app.MapControllers();
 app.Run();
