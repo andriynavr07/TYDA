@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up — TYDA</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.4/css/all.min.css">
+        <link rel="stylesheet" href="regi.css">
+    </head>
+    <body>
+
+        <header class="header">
+            <div class="logo">TY<span>DA</span></div>
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="login.html" class="nav-btn">Login</a>
+            </nav>
+        </header>
+
+        <div class="main-card">
+            <div class="form-side">
+
+                <p class="brand-label">TYDA</p>
+                <h1>Sign Up</h1>
+
+                <div class="input-field">
+                    <label>Name</label>
+                    <input type="text" id="nameInput" placeholder="Your full name">
+                    <i class="fas fa-id-card"></i>
+                </div>
+
+                <div class="input-field">
+                    <label>Nickname</label>
+                    <input type="text" id="nicknameInput" placeholder="@nickname (optional)">
+                    <i class="fas fa-at"></i>
+                </div>
+
+                <div class="input-field">
+                    <label>Email</label>
+                    <input type="email" id="emailInput" placeholder="Enter your email">
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <div class="input-field">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password" id="passInput">
+                    <i class="fas fa-eye" id="eyeIcon" onclick="togglePass()"></i>
+                </div>
+
+                <button class="sign-up-btn">Sign Up</button>
+                <p class="footer-text">Already have an account? <a href="login.html">Login</a></p>
+
+            </div>
+
+            <div class="image-side">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80" alt="Sign Up Image">
+                    <div class="image-overlay">
+                        <strong>Welcome to TYDA</strong>
+                        <p>Start your journey today</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+    function togglePass() {
+        const input = document.getElementById('passInput');
+        const icon = document.getElementById('eyeIcon');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+
+    document.querySelector('.sign-up-btn').addEventListener('click', async () => {
+        const name     = document.getElementById('nameInput').value.trim() || null;
+        const nickname = document.getElementById('nicknameInput').value.trim() || null;
+        const email    = document.getElementById('emailInput').value.trim();
+        const password = document.getElementById('passInput').value;
+
+        if (!email || !password) {
+            alert('Email та пароль обовʼязкові!');
+            return;
+        }
+
+        try {
+            const res = await fetch('http://localhost:5000/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, name, nickname })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert(data.message);
+                window.location.href = 'login.html';
+            } else {
+                alert(data.message);
+            }
+        } catch (err) {
+            alert('Сервер недоступний. Запусти dotnet run!');
+        }
+    });
+    </script>
+
+    </body>
+</html>

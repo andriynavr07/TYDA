@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2d2b7a 0%, #4338ca 40%, #5b21b6 70%, #1e3a8a 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 50px;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: #a78bfa;
+}
+
+.nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.nav a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav a:hover {
+    color: #fff;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 7px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: #fff !important;
+}
+
+.main-card {
+    display: flex;
+    width: 850px;
+    height: 500px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 40px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.form-side {
+    flex: 1.2;
+    padding: 50px 55px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-label {
+    text-align: center;
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 32px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 22px;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.45);
+}
+
+.input-field label {
+    display: block;
+    font-size: 0.75em;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.input-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 8px 32px 8px 0;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.input-field input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input-field i {
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.forgot {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 4px;
+}
+
+.forgot a {
+    font-size: 0.72rem;
+    color: #c4b5fd;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot a:hover {
+    color: #fff;
+}
+
+.sign-up-btn {
+    width: 100%;
+    padding: 13px;
+    border-radius: 18px;
+    border: none;
+    background: rgba(67, 56, 202, 0.9);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: 0.3s;
+    box-shadow: 0 4px 20px rgba(67, 56, 202, 0.4);
+}
+
+.sign-up-btn:hover {
+    background: rgba(79, 70, 229, 1);
+    transform: scale(1.02);
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+}
+
+.footer-text a {
+    color: #c4b5fd;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.image-side {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(10, 8, 50, 0.8));
+    padding: 18px;
+}
+
+.image-overlay strong {
+    font-size: 0.92rem;
+    display: block;
+    margin-bottom: 3px;
+    color: #fff;
+}
+
+.image-overlay p {
+    font-size: 0.73rem;
+    color: rgba(220, 210, 255, 0.8);
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .header {
+        padding: 14px 20px;
+    }
+
+    .main-card {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    .image-side {
+        display: none;
+    }
+}

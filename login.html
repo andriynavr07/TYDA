@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login — TYDA</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.4/css/all.min.css">
+        <link rel="stylesheet" href="log.css">
+    </head>
+    <body>
+
+        <header class="header">
+            <div class="logo">TY<span>DA</span></div>
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="sign_up.html" class="nav-btn">Sign Up</a>
+            </nav>
+        </header>
+
+        <div class="main-card">
+            <div class="form-side">
+
+                <p class="brand-label">TYDA</p>
+                <h1>Login</h1>
+
+                <div class="input-field">
+                    <label>Email/Username</label>
+                    <input type="text" id="loginInput" placeholder="Enter your email or @nickname">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="input-field">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password" id="passInput">
+                    <i class="fas fa-eye" id="eyeIcon" onclick="togglePass()"></i>
+                </div>
+
+                <div class="forgot">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button class="sign-up-btn">Login</button>
+                <p class="footer-text">Don't have an account? <a href="sign_up.html">Sign Up</a></p>
+
+            </div>
+
+            <div class="image-side">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80" alt="Login Image">
+                    <div class="image-overlay">
+                        <strong>Welcome back to TYDA</strong>
+                        <p>Good to see you again</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+    function togglePass() {
+        const input = document.getElementById('passInput');
+        const icon = document.getElementById('eyeIcon');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+
+    document.querySelector('.sign-up-btn').addEventListener('click', async () => {
+        const emailOrNickname = document.getElementById('loginInput').value.trim();
+        const password = document.getElementById('passInput').value;
+
+        if (!emailOrNickname || !password) {
+            alert('Заповніть всі поля!');
+            return;
+        }
+
+        try {
+            const res = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ emailOrNickname, password })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                if (data.role === 'admin') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            } else {
+                alert(data.message);
+            }
+        } catch (err) {
+            alert('Сервер недоступний. Запусти dotnet run!');
+        }
+    });
+    </script>
+
+    </body>
+</html>
